@@ -1,0 +1,114 @@
+{
+  "name": "electron-react-starter",
+  "version": "1.0.0",
+  "description": "Electron and Reactjs Starter with Hot Module Replacement",
+  "main": "app/main.js",
+  "scripts": {
+    "webpack": "webpack",
+    "webpack-dev-server": "webpack-dev-server",
+    "dev": "npm run webpack-dev-server -- --env.mode development --hot",
+    "watch": "npm run dev -- --watch",
+    "prod": "npm run webpack -- --env.mode production",
+    "prod:analyze": "npm run prod -- --env.presets analyze",
+    "prod:compress": "npm run prod -- --env.presets compress",
+    "debug": "node --inspect --inspect-brk ./node_modules/webpack/bin/webpack.js",
+    "debug:dev": "npm run debug -- --env.mode development",
+    "debug:prod": "npm run debug -- --env.mode production",
+    "debugthis": "node --inspect --inspect-brk ./src/index.js",
+    "start": "electron . --dev",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-all": "electron-builder  -mwl --x64",
+    "build-mac": "electron-builder --mac --x64",
+    "build-win": "electron-builder --win --x64",
+    "build-linux": "electron-builder --linux --x64"
+  },
+  "author": {
+    "name": "Jeandré Rohlandt",
+    "email": "jrohlandt@gmail.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^9.0.5",
+    "electron-builder": "^22.8.0",
+    "prettier": "^2.0.5",
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "compression-webpack-plugin": "^4.0.1",
+    "css-loader": "^4.2.1",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.10.0",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.44.1",
+    "webpack-bundle-analyzer": "^3.8.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.1.1"
+  },
+  "dependencies": {
+    "electron-log": "^4.2.2",
+    "electron-updater": "^4.3.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "build": {
+    "appId": "com.example.easy",
+    "copyright": "Copyright 2020 Me.me",
+    "icon": "./build/1024x1024.png",
+    "extraResources": [
+      {
+        "from": "./resources/backgrounds",
+        "to": "backgrounds"
+      },
+      {
+        "from": "./resources/fonts",
+        "to": "fonts"
+      },
+      {
+        "from": "./resources/music",
+        "to": "music"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.video",
+      "icon": "./build/icon.icns",
+      "extraResources": [
+        {
+          "from": "./resources/bin/mac",
+          "to": "bin"
+        }
+      ],
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "extraResources": [
+        {
+          "from": "./resources/bin/win",
+          "to": "bin"
+        }
+      ],
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "category": "Utility",
+      "icon": "./build/",
+      "extraResources": [
+        {
+          "from": "./resources/bin/linux",
+          "to": "bin"
+        }
+      ],
+      "target": [
+        "AppImage"
+      ]
+    }
+  }
+}
