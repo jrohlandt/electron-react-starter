@@ -19,8 +19,8 @@ import ReactDOM from "react-dom";
 
 // console.log(nav, top, bottom, topc, bottomc, "ddd");
 function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>Heddllddo, {props.name}</h1>;
 }
 
-const element = <Welcome name="Boet" />;
+const element = <Welcome name="Jy" />;
 ReactDOM.render(element, document.getElementById("app"));
