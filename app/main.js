@@ -3,7 +3,7 @@ const path = require("path");
 // const fs = require("fs");
 
 function isDev() {
-  return true;
+  return false;
 }
 
 function createWindow() {
@@ -20,19 +20,19 @@ function createWindow() {
   //   require(path.resolve(__dirname, "..", "webpack-server.js"));
   //   mainWindow.loadURL("http://localhost:3000/ui/dist/index.html");
   // } else {
-  if (isDev()) {
-    const htmlFile = path.resolve(__dirname, "..", "ui", "dist", "index.html");
-    win.loadFile(htmlFile);
-    win.webContents.openDevTools();
 
-    setTimeout(function () {
-      console.log("sending testmain");
-      win.webContents.send("testmain", "Hello from main.js");
-    }, 3000);
+  if (isDev()) {
+    win.loadURL("http://localhost:8080");
+    win.webContents.openDevTools();
   } else {
     const htmlFile = path.resolve(__dirname, "..", "ui", "dist", "index.html");
     win.loadFile(htmlFile);
   }
+
+  setTimeout(function () {
+    console.log("sending testmain");
+    win.webContents.send("testmain", "Hello from main.js");
+  }, 3000);
 }
 
 app.whenReady().then(createWindow);

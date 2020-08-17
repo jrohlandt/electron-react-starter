@@ -19,17 +19,13 @@ module.exports = ({ mode, presets } = { mode: "production", presets: [] }) => {
     plugins: [
       new webpack.ProgressPlugin(),
       new NotifyWhenDonePlugin(),
-      new HtmlWebpackPlugin({
-        template: "./ui/src/index.ejs",
-      }),
+      new HtmlWebpackPlugin({ template: "./ui/src/index.ejs" }),
     ],
-    externals: {
-      electron: "electron",
-    },
+    externals: { electron: "electron" },
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           loader: "babel-loader",
         },
