@@ -3,6 +3,14 @@ const path = require("path");
 // const fs = require("fs");
 
 function isDev() {
+  if (process.env["NODE_ENV"] === undefined) {
+    return false;
+  }
+
+  if (process.env["NODE_ENV"] === "development") {
+    return true;
+  }
+
   return false;
 }
 
@@ -14,12 +22,6 @@ function createWindow() {
       nodeIntegration: true,
     },
   });
-
-  // if (isDev()) {
-  //   // Load index.html via webpack dev server.
-  //   require(path.resolve(__dirname, "..", "webpack-server.js"));
-  //   mainWindow.loadURL("http://localhost:3000/ui/dist/index.html");
-  // } else {
 
   if (isDev()) {
     win.loadURL("http://localhost:8080");
