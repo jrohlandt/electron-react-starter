@@ -23,6 +23,9 @@ module.exports = ({ mode, presets } = { mode: "production", presets: [] }) => {
         template: "./ui/src/index.ejs",
       }),
     ],
+    externals: {
+      electron: "electron",
+    },
     module: {
       rules: [
         {

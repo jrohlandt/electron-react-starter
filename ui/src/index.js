@@ -1,3 +1,4 @@
+const { ipcRenderer } = window.require("electron");
 // import nav from "./nav";
 // import { top, bottom } from "./footer";
 // import { top as topc, bottom as bottomc } from "./footer-common";
@@ -16,11 +17,26 @@ import ReactDOM from "react-dom";
 
 // document.body.appendChild(Button("Happy button"));
 // document.body.appendChild(nav());
+class App extends React.Component {
+  componentDidMount() {
+    console.log("component did mount");
+    ipcRenderer.on("testmain", (event, message) => {
+      console.log("test from main", message);
+    });
+  }
 
-// console.log(nav, top, bottom, topc, bottomc, "ddd");
-function Welcome(props) {
-  return <h1>Heddllddo, {props.name}</h1>;
+  render() {
+    return (
+      <>
+        <div>Hello</div>
+      </>
+    );
+  }
 }
+// console.log(nav, top, bottom, topc, bottomc, "ddd");
+// function Welcome(props) {
+//   return <h1>Hello, {props.name}</h1>;
+// }
 
-const element = <Welcome name="Jy" />;
-ReactDOM.render(element, document.getElementById("app"));
+// const element = <Welcome name="Jy" />;
+ReactDOM.render(<App />, document.getElementById("app"));

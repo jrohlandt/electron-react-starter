@@ -6,8 +6,9 @@
   "scripts": {
     "webpack": "webpack",
     "webpack-dev-server": "webpack-dev-server",
-    "dev": "npm run webpack-dev-server -- --env.mode development --hot",
+    "dev:server": "npm run webpack-dev-server -- --env.mode development --hot",
     "watch": "npm run dev -- --watch",
+    "dev": "npm run webpack -- --env.mode development",
     "prod": "npm run webpack -- --env.mode production",
     "prod:analyze": "npm run prod -- --env.presets analyze",
     "prod:compress": "npm run prod -- --env.presets compress",
