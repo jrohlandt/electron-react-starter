@@ -1,5 +1,7 @@
 # Electron React Starter with Hot Module Replacment
 
+### Important always first run nvm use to switch to recommended Node version.
+
 ## Run in dev:
 
 First start webpack dev server
