@@ -2,28 +2,38 @@ const path = require("path");
 const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 
-const modeConfig = (env) => require(`./build-utils/webpack.${env}`)(env);
-const presetConfig = require("./build-utils/loadPresets");
+const modeConfig = (env) => require(`./ui/build-utils/webpack.${env}`)(env);
+const presetConfig = require("./ui/build-utils/loadPresets");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const NotifyWhenDonePlugin = require("./build-utils/plugins/NotifyWhenDonePlugin");
+const NotifyWhenDonePlugin = require("./ui/build-utils/plugins/NotifyWhenDonePlugin");
 
 module.exports = ({ mode, presets } = { mode: "production", presets: [] }) => {
   const baseConfig = {
     mode,
-    entry: "./src/index.js",
+    entry: "./ui/src/index.js",
     output: {
-      path: path.resolve(__dirname, "myDist"),
+      path: path.resolve(__dirname, "ui", "dist"),
       filename: "./bundle.js",
     },
     plugins: [
       new webpack.ProgressPlugin(),
       new NotifyWhenDonePlugin(),
-      new HtmlWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        template: "./ui/src/index.ejs",
+      }),
     ],
     module: {
       rules: [
-        { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: "babel-loader",
+        },
+        {
+          test: /\.css$/i,
+          use: ["style-loader", "css-loader"],
+        },
         // {
         //   test: /\.(jpe?g|svg)$/i,
         //   use: [
