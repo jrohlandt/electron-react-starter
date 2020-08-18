@@ -18,10 +18,10 @@
     "debugthis": "node --inspect --inspect-brk ./src/index.js",
     "start": "cross-env NODE_ENV=development electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-all": "electron-builder  -mwl --x64",
-    "build-mac": "electron-builder --mac --x64",
-    "build-win": "electron-builder --win --x64",
-    "build-linux": "electron-builder --linux --x64"
+    "build-all": "npm run prod && electron-builder  -mwl --x64",
+    "build-mac": "npm run prod && electron-builder --mac --x64",
+    "build-win": "npm run prod && electron-builder --win --x64",
+    "build-linux": "npm run prod && electron-builder --linux --x64"
   },
   "author": {
     "name": "Jeandré Rohlandt",
@@ -42,7 +42,9 @@
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.10.0",
+    "node-sass": "^4.14.1",
     "prettier": "^2.0.5",
+    "sass-loader": "^9.0.3",
     "style-loader": "^1.2.1",
     "url-loader": "^4.1.0",
     "webpack": "^4.44.1",

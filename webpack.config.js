@@ -29,10 +29,7 @@ module.exports = ({ mode, presets } = { mode: "production", presets: [] }) => {
           exclude: /node_modules/,
           loader: "babel-loader",
         },
-        {
-          test: /\.css$/i,
-          use: ["style-loader", "css-loader"],
-        },
+
         // {
         //   test: /\.(jpe?g|svg)$/i,
         //   use: [
